@@ -2,5 +2,7 @@
 .git
 .gitignore
 
+kustomize/
 LICENSE
 README.md
+skaffold.yaml

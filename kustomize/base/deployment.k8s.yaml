@@ -9,14 +9,16 @@ spec:
     spec:
       containers:
         - args:
-            - -http-addr=0.0.0.0:8080
-            - -grpc-addr=0.0.0.0:8081
+            - -otlp.endpoint=otelcol.otelcol.svc.cluster.local:4317
             - -data=/data
           name: archrepod
           image: docker.seankhliao.com/archrepod:latest
           env:
             - name: OTEL_SERVICE_NAME
               value: archrepod
+          envFrom:
+            - secretRef:
+                name: archrepod
           ports:
             - name: http
               containerPort: 8080
